@@ -28,10 +28,10 @@ describe("worker/core/season/newScheduleGood", () => {
 			testHelpers.resetG();
 		});
 
-		test("schedule 272 games (17 each for 32 teams)", () => {
+		test("schedule 256 games (16 each for 32 teams)", () => {
 			const { tids, warning } = newScheduleGood(defaultTeams);
 			assert.strictEqual(warning, undefined);
-			assert.strictEqual(tids.length, 272);
+			assert.strictEqual(tids.length, 256);
 		});
 
 		test("schedule 8 home games and 8 away games for each team", () => {
