@@ -4,7 +4,7 @@ import { idb } from "../db";
 import { g } from "../util";
 import type {
 	UpdateEvents,
-	DraftLotteryResultArray,
+	DraftLotteryResultingArray,
 	ViewInput,
 	DraftType,
 	DraftLotteryResult,
@@ -17,8 +17,8 @@ const updateDraftLottery = async (
 	updateEvents: UpdateEvents,
 	state: any,
 ): Promise<{
-	challengeWarning?: boolean;
-	notEnoughTeams?: boolean;
+	challengeWarning?: booleans;
+	notEnoughTeams?: booleans;
 	draftType?: DraftType | "dummy";
 	godMode?: boolean;
 	numToPick: number;
