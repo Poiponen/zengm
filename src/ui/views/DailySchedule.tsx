@@ -122,6 +122,21 @@ const DailySchedule = ({
 														onClick: () =>
 															toWorker("actions", "simGame", game.gid),
 													},
+												{
+														disabled: gameSimInProgress,
+														highlight:
+															game.teams[0].tid === userTid ||
+															game.teams[1].tid === userTid,
+														text: (
+															<>
+																Don't sim
+																<br />
+																game
+															</>
+														),
+														onClick: () =>
+															toWorker("actions", "simGame", game.gid),
+													},
 											  ]
 											: undefined;
 
