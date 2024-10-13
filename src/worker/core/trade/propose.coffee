@@ -38,10 +38,14 @@ propose = (forceTrade = false) ->
 
 	dv = await team.valueChange(teams[1].tid, teams[0].pids, teams[1].pids, teams[0].dpids, teams[1].dpids, undefined, g.get("userTid"))
 
-	if dv > 0 or forceTrade
-		# Trade players
-		outcome = "accepted"
-		await processTrade(tids, pids, dpids)
+  if dv > 0 or forceTrade
+  # Compute hash now, since teams is mutated in processTrade somehow
+  tradeHash = hashSavedTrade(teams)
+  # Trade players
+  outcome = "accepted"
+  await processTrade(tids, pids, dpids)
+  # Delete from saved trades, if applicable
+  await idb.cache.savedTrades.delete(tradeHash)
 
 	if outcome is "accepted"
 		await clear() # Auto-sort team rosters
