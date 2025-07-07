@@ -1,0 +1,10 @@
+# Import necessary modules
+Import-Module "../../db/index.ps1"
+Import-Module "../../util/index.ps1"
+
+function Get-IsFinals {
+    $numGamesPlayoffSeries = Get-G "numGamesPlayoffSeries" "current"
+    $playoffSeries = Get-IdbCachePlayoffSeries (Get-G "season")
+
+    return $playoffSeries.currentRound -eq ($numGamesPlayoffSeries.Count - 1)
+}
